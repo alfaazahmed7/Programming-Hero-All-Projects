@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.inter-font {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+}
+
+body {
+    background-color: #EFF2F1;
+}
+
+/* share styles */
+
+.display-flex {
+    display: flex;
+}
+
+.dark-02 {
+    color: rgb(106, 106, 106);
+}
+
+.dark-03 {
+    color: rgb(255, 255, 255);
+}
+
+.dark-04 {
+    color: rgba(255, 255, 255, .05);
+}
+
+.content-description {
+    font-size: 0.9rem;
+    line-height: 1.75rem;
+    color: #9DAEA8;
+    margin-bottom: 1.8rem;
+}
+
+.primary-btn {
+    background-color: #F9BF29;
+    color: rgb(47, 47, 47);
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 80px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.content-title {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    font-weight: 500;
+    color: rgb(47, 47, 47);
+    margin-bottom: 1.8rem;
+}
+
+/* header styles */
+
+header {
+    align-items: center;
+    justify-content: space-around;
+    background-color: #3B5D50;
+    padding: 2.5rem 9rem;
+}
+
+.logo a {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    line-height: 1.75rem;
+    text-decoration: none;
+}
+
+.navbar ul {
+    margin-left: 6rem;
+}
+
+.navbar li {
+    list-style: none;
+    margin-right: 2.5rem;
+    color: rgb(106, 106, 106);
+}
+
+.navbar a:hover {
+    color: rgb(255, 255, 255);
+    padding-bottom: 5px;
+    border-bottom: 5px solid #F9BF29;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, .55);
+}
+
+.nav-icons {
+    color: #fff;
+    font-size: 1.25rem;
+    display: flex;
+    gap: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+/* banner styles */
+
+#banner {
+    background-color: #3B5D50;
+}
+
+.banner-container {
+    background-color: #3B5D50;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+    gap: 9rem;
+}
+
+.banner-content h2 {
+    font-size: 3.3rem;
+    line-height: 4rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255);
+    margin-bottom: 3rem;
+}
+
+.banner-content p {
+    margin-bottom: 30px;
+}
+
+.banner-btn {
+    background-color: #3B5D50;
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border: 2px solid rgba(255, 255, 255, 0.092);
+    border-radius: 80px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.banner-btn:hover {
+    border: 2px solid #fff;
+}
+
+/* material styles */
+
+#material {
+    padding-top: 7rem;
+}
+
+.material-container {
+    justify-content: center;
+}
+
+.material-content {
+    max-width: 330px;
+    padding: 0 0.8rem;
+}
+
+.material-btn {
+    background-color: #222222;
+    color: #fff;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 80px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.material-card {
+    padding: 0 0.8rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.material-card h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2rem;
+    color: rgb(47, 47, 47);
+    margin-bottom: 1rem;
+}
+
+.material-card h4 {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    font-weight: 800;
+    color: rgb(47, 47, 47);
+    margin-bottom: 0.5rem;
+}
+
+.material-card img {
+    height: 306px;
+    max-width: 306px;
+    margin-bottom: 2rem;
+}
+
+/* about-us styles */
+
+#about-us {
+    padding: 7rem 0;
+}
+
+.about-us-container {
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+}
+
+.about-us-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 2rem;
+}
+
+.content-title {
+    margin-bottom: 1rem;
+}
+
+.about-us-card {
+    max-width: 306px;
+    margin-bottom: 2rem;
+}
+
+.about-us-image img {
+    max-width: 525px;
+    border-radius: 8px;
+    height: auto;
+    object-fit: cover;
+}
+
+.about-us-card img {
+    max-width: 46px;
+    margin-bottom: 1rem;
+}
+
+.about-us-card h6 {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: rgb(47, 47, 47);
+    margin-bottom: 0.8rem;
+}
+
+.about-us-card p {
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+    color: rgb(106, 106, 106);
+}
+
+
+/* responsiveness for 576px*/
+
+@media screen and (max-width: 576px) {
+    header {
+        padding: 1.25rem 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar li,
+    .nav-icons {
+        display: none;
+    }
+
+    .banner-container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .banner-content {
+        padding: 0 10px;
+    }
+
+    .banner-content h2 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .banner-image img {
+        width: 200%;
+    }
+
+    .material-container,
+    .material-info,
+    .about-us-container {
+        flex-direction: column;
+    }
+
+    .material-content {
+        margin-bottom: 4rem;
+    }
+
+    .about-us-image img {
+        width: 300px;
+    }
+}
+
+/* responsiveness for 576px to 992px*/
+
+@media screen and (min-width:576px) and (max-width:992px) {
+
+    header {
+        padding: 2rem 0;
+    }
+
+    .banner-container {
+        flex-direction: column;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .banner-content h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        padding-top: 1rem;
+    }
+
+    .navbar ul {
+        margin-left: 0;
+    }
+
+    .material-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .material-content {
+        max-width: 70%;
+        margin: 0 auto;
+        padding-bottom: 50px;
+    }
+
+    .material-info {
+        justify-content: center;
+    }
+
+    .material-card img {
+        height: 206px;
+        width: 206px;
+    }
+
+    .about-us-container {
+        max-width: 800px;
+        margin: 0 auto;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
