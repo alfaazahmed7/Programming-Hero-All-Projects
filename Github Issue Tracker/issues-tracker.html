@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issue Tracker</title>
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind & DaisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-gray-200">
+
+    <!-- issues tracker header -->
+    <section class="bg-white mb-7 md:mb-[60px]">
+        <div class="w-11/12 mx-auto md:flex justify-between items-center py-5">
+            <div class="flex justify-center gap-2 mb-3 md:mb-0">
+                <img class="max-w-[37px]" src="./assets/github-logo.png" alt="">
+                <h2 class="text-2xl font-semibold text-[#1F2937]">GitHub Issues Tracker</h2>
+            </div>
+            <div class="flex justify-center gap-2">
+                <div>
+                    <label class="input">
+                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                stroke="currentColor">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </g>
+                        </svg>
+                        <input id="input-search" type="search" required placeholder="Search Issue" />
+                    </label>
+                </div>
+                <div>
+                    <button id="btn-search" class="btn btn-primary"> Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- toggle buttons -->
+    <section class="w-11/12 mx-auto mb-4">
+        <div class="bg-white p-6 rounded-xl">
+            <div id="cart-container">
+                <button onclick="switchTab('tab-all')" id="tab-all"
+                    class="tab-all bg-white text-[#64748B] border-2 border-[#E4E4E7] rounded-md py-2 px-4 md:px-10 font-semibold cursor-pointer">All</button>
+                <button onclick="switchTab('tab-open')" id="tab-open"
+                    class="tab-open bg-white text-[#64748B] border-2 border-[#E4E4E7] rounded-md py-2 px-4 md:px-10 font-semibold cursor-pointer">Open</button>
+                <button onclick="switchTab('tab-closed')" id="tab-closed"
+                    class="tab-closed bg-white text-[#64748B] border-2 border-[#E4E4E7] rounded-md py-2 px-4 md:px-10 font-semibold cursor-pointer">Closed</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- issues store section -->
+    <section class="w-11/12 mx-auto mb-4">
+        <div class="flex justify-between items-center bg-white p-5 rounded-xl">
+            <div class="flex items-center gap-2">
+                <img src="./assets/Aperture.png" alt="">
+                <div>
+                    <h2 class="text-xl font-semibold text-[#1F2937]"><span id="total-carts">0</span> Issues</h2>
+                    <p class="text-[12px] sm:text-base text-[#64748B] max-w-[161px] md:max-w-none md:w-full">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="md:flex gap-2">
+                <p class="text-base font-medium text-[#1F2937]"><i class="fa-solid fa-circle"
+                        style="color: rgb(99, 230, 190);"></i> Open</p>
+                <p class="text-base font-medium text-[#1F2937]"><i class="fa-solid fa-circle"
+                        style="color: rgb(72, 20, 224);"></i> Closed</p>
+            </div>
+        </div>
+        <hr class="text-[#E4E4E7] ">
+    </section>
+
+    <!-- loading spinner -->
+    <section class="w-11/12 mx-auto flex justify-center items-center py-10 hidden">
+        <span id="spinner" class="loading loading-spinner loading-xl"></span>
+    </section>
+
+    <!-- cart section -->
+    <section class="w-11/12 mx-auto bg-gray-200 pb-5">
+        <div id="all-cart-container" class="grid md:grid-cols-2 lg:grid-cols-3 2xl:xl:grid-cols-4 gap-3">
+        </div>
+
+        <!-- modal -->
+        <div>
+            <dialog id="cart-details-modal" class="modal modal-middle ">
+                <div class="modal-box">
+
+                    <div>
+                        <div>
+                            <h2 id="modal-title" class="text-[#1F2937] text-2xl font-bold mb-3">Fix broken image uploads
+                            </h2>
+                        </div>
+                        <div class="flex gap-2 items-center mb-7">
+                            <span id="modal-status"
+                                class="bg-[#00A96E] text-[12px] font-medium py-1 px-2 rounded-lg text-white">Opened</span>
+                            <div class="flex gap-2 items-center text-[#64748B] text-[12px]">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl">•</span>
+                                    <p>Opened by <span id="modal-author">Fahim Ahmed</span></p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl">•</span>
+                                    <p id="modal-updateat">22/02/2026</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 mb-6">
+                            <span id="modal-level-zero"
+                                class="bg-[#FECACA] text-[#EF4444] text-[12px] rounded-lg py-1 px-3">BUG</span>
+                            <span id="modal-level-one"
+                                class="bg-[#FFF8DB] text-[#D97706] text-[12px] rounded-lg py-1 px-3">HELP WANTED</span>
+                        </div>
+                        <div>
+                            <p id="modal-description" class="text-base text-[#64748B] mb-6">The navigation menu doesn't
+                                collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+                        </div>
+                        <div class="bg-gray-100 flex p-4 rounded-xl">
+                            <div class="w-[50%]">
+                                <p class="text-base text-[#64748B]">Assignee</p>
+                                <span id="modal-assignee" class="text-[#1F2937] text-base font-semibold">Fahim
+                                    Ahmed</span>
+                            </div>
+                            <div class="w-[50%]">
+                                <p class="text-base text-[#64748B]">Priority:</p>
+                                <span id="modal-priority"
+                                    class="bg-[#EF4444] py-1 px-3 text-[12px] font-medium text-white rounded-xl">HIGH</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn btn-primary">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+        </div>
+    </section>
+
+    <script src="script/script.js"></script>
+</body>
+
+</html>
